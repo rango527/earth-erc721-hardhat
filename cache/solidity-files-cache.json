@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/rango/erc721-earth-test/contracts/ERC20.sol": {
+      "lastModificationDate": 1618822036781,
+      "contentHash": "8a0dd0f3022886b1c3ef1b5e7a92f3fa",
+      "sourceName": "contracts/ERC20.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.7.6"
+      ],
+      "artifacts": [
+        "ERC20",
+        "IERC20",
+        "SafeMath"
+      ]
+    }
+  }
+}
