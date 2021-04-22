@@ -472,7 +472,7 @@ abstract contract ERC165 is IERC165 {
     }
 }
 
-contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
+contract Sun is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
     using SafeMath for uint256;
     using Address for address;
     using EnumerableSet for EnumerableSet.UintSet;
@@ -503,9 +503,9 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
 
     bytes4 private constant _INTERFACE_ID_ERC721_ENUMERABLE = 0x780e9d63;
 
-    constructor (string memory name_, string memory symbol_) {
-        _name = name_;
-        _symbol = symbol_;
+    constructor () {
+        _name = "Sun";
+        _symbol = "SUN";
 
         _registerInterface(_INTERFACE_ID_ERC721);
         _registerInterface(_INTERFACE_ID_ERC721_METADATA);
@@ -563,10 +563,10 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
     }
 
     function approve(address to, uint256 tokenId) public virtual override {
-        address owner = ERC721.ownerOf(tokenId);
+        address owner = Sun.ownerOf(tokenId);
         require(to != owner, "ERC721: approval to current owner");
 
-        require(msg.sender == owner || ERC721.isApprovedForAll(owner, msg.sender),
+        require(msg.sender == owner || Sun.isApprovedForAll(owner, msg.sender),
             "ERC721: approve caller is not owner nor approved for all"
         );
 
@@ -617,8 +617,8 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
 
     function _isApprovedOrOwner(address spender, uint256 tokenId) internal view virtual returns (bool) {
         require(_exists(tokenId), "ERC721: operator query for nonexistent token");
-        address owner = ERC721.ownerOf(tokenId);
-        return (spender == owner || getApproved(tokenId) == spender || ERC721.isApprovedForAll(owner, spender));
+        address owner = Sun.ownerOf(tokenId);
+        return (spender == owner || getApproved(tokenId) == spender || Sun.isApprovedForAll(owner, spender));
     }
 
     function _safeMint(address to, uint256 tokenId) internal virtual {
@@ -644,7 +644,7 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
     }
 
     function _burn(uint256 tokenId) internal virtual {
-        address owner = ERC721.ownerOf(tokenId); // internal owner
+        address owner = Sun.ownerOf(tokenId); // internal owner
 
         _beforeTokenTransfer(owner, address(0), tokenId);
 
@@ -664,7 +664,7 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
     }
 
     function _transfer(address from, address to, uint256 tokenId) internal virtual {
-        require(ERC721.ownerOf(tokenId) == from, "ERC721: transfer of token that is not own"); // internal owner
+        require(Sun.ownerOf(tokenId) == from, "ERC721: transfer of token that is not own"); // internal owner
         require(to != address(0), "ERC721: transfer to the zero address");
 
         _beforeTokenTransfer(from, to, tokenId);
@@ -708,7 +708,7 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata, IERC721Enumerable {
 
     function _approve(address to, uint256 tokenId) internal virtual {
         _tokenApprovals[tokenId] = to;
-        emit Approval(ERC721.ownerOf(tokenId), to, tokenId); // internal owner
+        emit Approval(Sun.ownerOf(tokenId), to, tokenId); // internal owner
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual { }

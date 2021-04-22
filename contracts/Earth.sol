@@ -93,7 +93,7 @@ library SafeMath {
     }
 }
 
-contract ERC20 is IERC20 {
+contract Earth is IERC20 {
     using SafeMath for uint256;
 
     mapping (address => uint256) private _balances;
